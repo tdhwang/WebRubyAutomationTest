@@ -1,0 +1,12 @@
+source 'http://rubygems.org'
+
+gem 'bundler'
+gem 'cucumber'
+gem 'guard'
+gem 'guard-cucumber'
+gem 'rake'
+gem 'rspec'
+gem 'selenium-webdriver'
+gem 'capybara'
+gem 'rubocop'
+gem 'watir'
