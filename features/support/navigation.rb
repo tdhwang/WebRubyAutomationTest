@@ -46,10 +46,10 @@ class Navigation
     day_history_section.attribute('data-vsname')
   end
 
-  def search_input
+  def search_input(search_criteria)
     @wait.until { input_form.displayed? }
     input_form.click
-    input_form.send_keys("Google Documents")
+    input_form.send_keys(search_criteria)
     search_button.click
   end
 

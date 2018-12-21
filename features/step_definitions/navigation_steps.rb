@@ -24,8 +24,8 @@ And(/^a user validates On This Day In History section$/) do
   expect(@navigation.day_history_section_displayed).to match("otd")
 end
 
-And(/^a user searches for google docs$/) do
-  @navigation.search_input
+And(/^a user searches for (.*)$/) do |search_criteria|
+  @navigation.search_input(search_criteria)
   sleep(5)
 end
 
