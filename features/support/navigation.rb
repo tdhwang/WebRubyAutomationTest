@@ -65,11 +65,11 @@ class Navigation
   end
 
   def result_list_name_displayed
-    i = result_list.length
-    loop do 
-      i -= 1
-      puts result_list[i].text
-      if i == 0
+    count = 0 
+    for foo in result_list
+      puts result_list[count].text
+      count +=1
+      if count == result_list.length
         break
       end
     end
