@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  ruby:
+    container_name: WebRubyTest
+    build:
+      context: .
+    env_file:
+      - .env.localdocker
+    volumes:
+      - .:/home/WebRubyAutomationTest
+    depends_on:
+      - hub
+    command: ["tail", "-f", "/dev/null"]
+  hub:
+    image: selenium/hub
+    container_name: hub
+    ports:
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome-debug
+    container_name: chrome
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=hub
+      - HUB_PORT_4444_TCP_PORT=4444
+    depends_on:
+      - hub
+    ports:
+      - "7900:5900"
