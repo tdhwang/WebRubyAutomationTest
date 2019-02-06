@@ -1,8 +1,8 @@
-# Provider Home page 
+# Provider Home page
 class ProviderHome
   def initialize(browser)
-      @browser = browser
-      @wait = Selenium::WebDriver::Wait.new(timeout: 15)
+    @browser = browser
+    @wait = Selenium::WebDriver::Wait.new(timeout: 15)
   end
 
   def select_login_button
@@ -11,8 +11,8 @@ class ProviderHome
   end
 
   def select_get_started_button
-    @wait.until { get_started_button.displayed? }
-    get_started_button.click
+    @wait.until { started_button.displayed? }
+    started_button.click
   end
 
   def contact_info_displayed?
@@ -25,13 +25,13 @@ class ProviderHome
     sign_up_button.click
   end
 
-  private 
+  private
 
   def provider_login_button
     @browser.find_element(:xpath, '//a[text()="provider login"]')
   end
 
-  def get_started_button
+  def started_button
     @browser.find_element(:xpath, '//a[text()="Get Started"]')
   end
 
@@ -44,5 +44,3 @@ class ProviderHome
     @browser.find_element(:xpath, '//a[text()="SIGN UP"]')
   end
 end
-
-

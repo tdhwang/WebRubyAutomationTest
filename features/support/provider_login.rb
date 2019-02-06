@@ -1,3 +1,4 @@
+# Provider Login page
 class ProviderLogin
   def initialize(browser)
     @browser = browser
@@ -11,13 +12,13 @@ class ProviderLogin
   def enter_email(email)
     @wait.until { email_form.displayed? }
     email_form.click
-    email_form.send_keys(email + "@gmail.com")
+    email_form.send_keys(email + '@gmail.com')
   end
 
   def enter_password(password)
     @wait.until { password_form.displayed? }
     password_form.click
-    password_form.send_keys(password) 
+    password_form.send_keys(password)
   end
 
   def select_login_button
@@ -26,7 +27,7 @@ class ProviderLogin
   end
 
   def error_message_displayed?
-    @wait.until{ error_message.displayed? }
+    @wait.until { error_message.displayed? }
   end
 
   private
@@ -51,4 +52,3 @@ class ProviderLogin
     @browser.find_element(:xpath, '//h4//span')
   end
 end
-

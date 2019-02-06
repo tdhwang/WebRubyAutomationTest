@@ -4,13 +4,13 @@ Given(/^the user navigates to the Brighter website$/) do
   @navigation = Navigation.new(@browser)
   @navigation.navigate_to_page(@browser)
   @brighter_home = BrighterHome.new(@browser)
-  expect(@brighter_home.homepage_text_displayed?).to match("The leader in Digital Health Plans")
+  expect(@brighter_home.homepage_text_displayed?).to match('The leader in Digital Health Plans')
 end
 
 And(/^the user selects the provider link on Brighter Home page$/) do
   @brighter_home.select_provider_link
   @provider_home = ProviderHome.new(@browser)
-  expect(@provider_home.contact_info_displayed?).to match("Provider Questions? 1.888.300.4742")
+  expect(@provider_home.contact_info_displayed?).to match('Provider Questions? 1.888.300.4742')
 end
 
 And(/^the user navigates to the provider login page$/) do
@@ -48,6 +48,6 @@ And(/^the user selects the Find My Practice button$/) do
   @find_practice.select_find_practice_button
 end
 
-And(/^the user receives mismatch error message$/) do 
+And(/^the user receives mismatch error message$/) do
   @find_practice.mismatch_message_displayed?
 end

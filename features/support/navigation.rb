@@ -5,9 +5,9 @@ class Navigation
     @wait = Selenium::WebDriver::Wait.new(timeout: 15)
   end
 
-  def navigate_to_page(browser)
-    # path = "#{ENV['PLATFORM_URL']}"
-    path = 'https://www.brighter.com/'
+  def navigate_to_page(_browser)
+    path = (ENV['PLATFORM_URL']).to_s
+    # path = 'https://www.brighter.com/'
     @browser.navigate.to(path)
   end
 end

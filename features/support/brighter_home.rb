@@ -1,9 +1,9 @@
-# Brighter Home page 
+# Brighter Home page
 # Brighter Home page
 class BrighterHome
   def initialize(browser)
-      @browser = browser
-      @wait = Selenium::WebDriver::Wait.new(timeout: 15)
+    @browser = browser
+    @wait = Selenium::WebDriver::Wait.new(timeout: 15)
   end
 
   def select_provider_link
@@ -16,9 +16,8 @@ class BrighterHome
     homepage_text.text
   end
 
-
   private
-  
+
   def homepage_text
     @browser.find_element(:xpath, '//h1[text()="The leader in Digital Health Plans"]')
   end
@@ -27,4 +26,3 @@ class BrighterHome
     @browser.find_element(:xpath, '//a[text()="For Providers"]')
   end
 end
-

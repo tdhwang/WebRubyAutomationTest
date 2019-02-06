@@ -1,3 +1,4 @@
+# Find Practice page
 class FindPractice
   def initialize(browser)
     @browser = browser
