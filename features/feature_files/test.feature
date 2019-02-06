@@ -1,14 +1,33 @@
+@test 
 Feature: Code Automation Test
 
-  @test
-  Scenario Outline: Test Automation
-    Given a user navigates to the website
-    And a user validates elements on page
-    And a user validates Image of Day section
-    And a user validates On This Day In History section
-    And a user searches for <search_criteria>
-    And a user validates search page result
-    And a user switches to news tab with same result
+  Scenario: Brighter Provider home page navigation
+    Given the user navigates to the Brighter website
+    And the user selects the provider link on Brighter Home page
+
+  Scenario Outline: Invalid user email login
+    Given the user navigates to the Brighter website
+    And the user selects the provider link on Brighter Home page
+    And the user navigates to the provider login page
+    And the user enters false <email> in email form
+    And the user enters valid <password> in password form
+    And the user select the login button
+    And the user receives an error message
     Examples:
-    | search_criteria  |
-    | Google Documents |
+    | email        | password     |
+    | fake_string  | password     |
+    | another_fake | another_pass |
+  
+  Scenario Outline: Find Your Practice mismatch message
+    Given the user navigates to the Brighter website 
+    And the user selects the provider link on Brighter Home page
+    And the user selects the Sign Up button
+    And the user enters a mismatch <phone_number>
+    And the user selects the Find My Practice button
+    And the user receives mismatch error message
+    Examples:
+    | phone_number |
+    |  1111111111  |
+
+
+  

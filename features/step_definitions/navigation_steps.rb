@@ -1,43 +1,53 @@
 require 'rspec'
 
-Given(/^a user navigates to the website$/) do
+Given(/^the user navigates to the Brighter website$/) do
   @navigation = Navigation.new(@browser)
   @navigation.navigate_to_page(@browser)
+  @brighter_home = BrighterHome.new(@browser)
+  expect(@brighter_home.homepage_text_displayed?).to match("The leader in Digital Health Plans")
 end
 
-And(/^a user validates elements on page$/) do
-  expect(@navigation.page_title_value).to match("Bing")
-  expect(@navigation.page_header_value).to match("navigation")
-  expect(@navigation.page_search_form_value).to match("search")
+And(/^the user selects the provider link on Brighter Home page$/) do
+  @brighter_home.select_provider_link
+  @provider_home = ProviderHome.new(@browser)
+  expect(@provider_home.contact_info_displayed?).to match("Provider Questions? 1.888.300.4742")
 end
 
-And(/^a user validates Image of Day section$/) do
-  @browser.action.send_keys(:arrow_down).perform
-  @browser.action.send_keys(:arrow_down).perform
-  @browser.action.send_keys(:arrow_down).perform
-  expect(@navigation.image_day_title_displayed).to match("IMAGE OF THE DAY")
-  expect(@navigation.image_day_section_displayed).to match("iotd")
+And(/^the user navigates to the provider login page$/) do
+  @provider_home.select_login_button
+  @provider_login = ProviderLogin.new(@browser)
+  @provider_login.login_text_displayed?
 end
 
-And(/^a user validates On This Day In History section$/) do
-  expect(@navigation.day_history_title_displayed).to match("ON THIS DAY IN HISTORY")
-  expect(@navigation.day_history_section_displayed).to match("otd")
+And(/^the user enters false (.*) in email form$/) do |email|
+  @provider_login.enter_email(email)
 end
 
-And(/^a user searches for (.*)$/) do |search_criteria|
-  @navigation.search_input(search_criteria)
-  sleep(5)
+And(/^the user enters valid (.*) in password form$/) do |password|
+  @provider_login.enter_password(password)
 end
 
-And(/^a user validates search page result$/) do
-  @navigation.search_result_displayed
-  @navigation.result_list_displayed
-  @navigation.result_list_name_displayed
+And(/^the user select the login button$/) do
+  @provider_login.select_login_button
 end
 
-And(/^a user switches to news tab with same result$/) do
-  old_news = @navigation.old_news_displayed
-  @navigation.select_news_tab
-  new_news = @navigation.new_news_displayed
-  expect(old_news).to match(new_news)
+And(/^the user receives an error message$/) do
+  @provider_login.error_message_displayed?
+end
+
+And(/^the user selects the Sign Up button$/) do
+  @provider_home.select_sign_up_button
+end
+
+And(/^the user enters a mismatch (.*)$/) do |phone_number|
+  @find_practice = FindPractice.new(@browser)
+  @find_practice.enter_number(phone_number)
+end
+
+And(/^the user selects the Find My Practice button$/) do
+  @find_practice.select_find_practice_button
+end
+
+And(/^the user receives mismatch error message$/) do 
+  @find_practice.mismatch_message_displayed?
 end
