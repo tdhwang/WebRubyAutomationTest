@@ -1,0 +1,27 @@
+image: ruby:2.5-alpine
+
+cache: 
+  paths:
+    -vendor/cache
+    
+stages:
+  - dependencies
+  - lint
+  - test
+
+install_dependencies:
+  stage: dependencies
+  before_script:
+    - ruby -v
+  script:
+    - apk add --update --no-cache build base libxml2-dev libxslt-dev
+    - gem install bundler
+    - bundle install --path vendor
+
+run_linter:
+  stage: lint
+  script:
+    - bundle install --path vendor
+    - bundle exec rubocop
+
+  
