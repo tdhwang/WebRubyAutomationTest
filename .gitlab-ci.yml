@@ -21,4 +21,12 @@ run_linter:
     - bundle install --path vendor
     - bundle exec rubocop
 
-  
+automation_test:
+  stage: test
+  script: 
+    - apk add --update --no-cache build-base libxml2-dev libxslt-dev
+    - bundle install --path vendor
+    - make up
+    - bundle exec cucumber 
+  after_script:
+    - make down
