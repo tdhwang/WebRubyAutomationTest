@@ -10,11 +10,6 @@ class ProviderHome
     provider_login_button.click
   end
 
-  def select_get_started_button
-    @wait.until { started_button.displayed? }
-    started_button.click
-  end
-
   def contact_info_displayed?
     @wait.until { contact_info.displayed? }
     contact_info.text
@@ -28,19 +23,14 @@ class ProviderHome
   private
 
   def provider_login_button
-    @browser.find_element(:xpath, '//a[text()="provider login"]')
-  end
-
-  def started_button
-    @browser.find_element(:xpath, '//a[text()="Get Started"]')
+    @browser.find_element(:css, 'div>ul>li>a[ui-sref=login]')
   end
 
   def contact_info
-    locater = '//div[@class="logged-out"]//p[text()="Provider questions? 1.888.300.4742"]'
-    @browser.find_element(:xpath, locater)
+    @browser.find_element(:css, 'div.logged-out>div>p')
   end
 
   def sign_up_button
-    @browser.find_element(:xpath, '//a[text()="SIGN UP"]')
+    @browser.find_element(:css, 'div#homepage-banner>div>a')
   end
 end

@@ -16,7 +16,7 @@ end
 And(/^the user navigates to the provider login page$/) do
   @provider_home.select_login_button
   @provider_login = ProviderLogin.new(@browser)
-  @provider_login.login_text_displayed?
+  expect(@provider_login.login_text_displayed?).to match('Log into your account')
 end
 
 And(/^the user enters false (.*) in email form$/) do |email|
@@ -32,7 +32,7 @@ And(/^the user select the login button$/) do
 end
 
 And(/^the user receives an error message$/) do
-  @provider_login.error_message_displayed?
+  expect(@provider_login.error_message_displayed?).to match('Internal Server Error. Please try again later.')
 end
 
 And(/^the user selects the Sign Up button$/) do
@@ -49,5 +49,5 @@ And(/^the user selects the Find My Practice button$/) do
 end
 
 And(/^the user receives mismatch error message$/) do
-  @find_practice.mismatch_message_displayed?
+  expect(@find_practice.mismatch_message_displayed?).to match('We are unable to find a match for that phone number.')
 end

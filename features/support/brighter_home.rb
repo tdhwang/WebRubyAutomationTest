@@ -19,10 +19,10 @@ class BrighterHome
   private
 
   def homepage_text
-    @browser.find_element(:xpath, '//h1[text()="The leader in Digital Health Plans"]')
+    @browser.find_element(:css, 'div.content>h1')
   end
 
   def provider_link
-    @browser.find_element(:xpath, '//a[text()="For Providers"]')
+    @browser.find_element(:css, 'div.logged-out>ul>li:nth-child(1)>a')
   end
 end

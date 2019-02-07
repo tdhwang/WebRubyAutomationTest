@@ -22,23 +22,24 @@ class FindPractice
 
   def mismatch_message_displayed?
     @wait.until { mismatch_message.displayed? }
+    mismatch_message.text
   end
 
   private
 
   def find_practice_page
-    @browser.find_element(:xpath, '//h2[text()="Find your practice"]')
+    @browser.find_element(:css, 'div#practice-search>h2')
   end
 
   def number_form
-    @browser.find_element(:xpath, '//input[@type="tel"]')
+    @browser.find_element(:css, 'div#practice-search>form>input[type="tel"]')
   end
 
   def find_practice_button
-    @browser.find_element(:xpath, '//button[text()="Find my practice"]')
+    @browser.find_element(:css, 'div#practice-search>form>button')
   end
 
   def mismatch_message
-    @browser.find_element(:xpath, '//h2[text()="We are unable to find a match for that phone number."]')
+    @browser.find_element(:css, 'div#no-match>h2')
   end
 end
