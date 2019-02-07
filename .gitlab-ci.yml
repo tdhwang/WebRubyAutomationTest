@@ -10,7 +10,7 @@ install_dependencies:
   before_script:
     - ruby -v
   script:
-    - apk add --update --no-cache build base libxml2-dev libxslt-dev
+    - apk add --update --no-cache build-base libxml2-dev libxslt-dev
     - gem install bundler
     - bundle install --path vendor
 
