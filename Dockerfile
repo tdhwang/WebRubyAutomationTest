@@ -4,7 +4,6 @@ RUN apk add --update --no-cache \
     build-base \
     libxml2-dev \
     libxslt-dev \
-    vim \
     curl \
     bash
 
@@ -20,3 +19,6 @@ RUN bundle install
 
 # Copy test suite
 ADD . /home/WebRubyAutomationTest
+
+# Run tests
+RUN bundle exec cucumber

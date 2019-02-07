@@ -23,9 +23,11 @@ run_linter:
 
 automation_test:
   stage: test
+  image: gitlab/dnd
   script: 
     - apk add --update --no-cache build-base libxml2-dev libxslt-dev
     - bundle install --path vendor
+    - make build
     - make up
     - bundle exec cucumber 
   after_script:
