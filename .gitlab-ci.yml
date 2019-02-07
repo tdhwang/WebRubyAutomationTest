@@ -2,7 +2,7 @@ image: ruby:2.5-alpine
 
 cache: 
   paths:
-    -vendor/cache
+    - vendor/cache
     
 stages:
   - dependencies
