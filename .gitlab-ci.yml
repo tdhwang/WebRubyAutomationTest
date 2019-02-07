@@ -17,6 +17,7 @@ install_dependencies:
 run_linter:
   stage: lint
   script:
+    - apk add --update --no-cache build-base libxml2-dev libxslt-dev
     - bundle install --path vendor
     - bundle exec rubocop
 
