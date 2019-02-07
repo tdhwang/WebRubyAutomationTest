@@ -21,4 +21,4 @@ RUN bundle install
 ADD . /home/WebRubyAutomationTest
 
 # Run tests
-RUN bundle exec cucumber
+# RUN bundle exec cucumber

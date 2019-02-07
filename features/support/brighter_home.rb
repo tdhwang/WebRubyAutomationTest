@@ -1,5 +1,4 @@
 # Brighter Home page
-# Brighter Home page
 class BrighterHome
   def initialize(browser)
     @browser = browser
