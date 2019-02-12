@@ -7,7 +7,7 @@ Ruby Automation for Web Automation test
 
 * Run script `bundle install` to install all gem dependencies
 
-* Run script `cucumber --tags @tcc` to run automation test
+* Run script `cucumber --tags @tcc` to run automation test for TCC 
 
 ## Docker Setup
 
