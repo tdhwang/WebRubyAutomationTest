@@ -7,10 +7,18 @@ Ruby Automation for Web Automation test
 
 * Run script `bundle install` to install all gem dependencies
 
-* Run script `cucumber --tags @test` to run automation test
+* Run script `cucumber --tags @tcc` to run automation test
 
-## Testing Instructions for API Tests
+## Docker Setup
 
-* Open Terminal
+* Ensure the .env.localdocker file contains url to testing browser
 
-* Run script `ruby <file name>`
+* Ensure that navigation support file is pointing to ENV url
+
+* Open terminal and run `make build` to build Docker images
+
+* Run `make up` to make up Docker containers
+
+* Open another terminal and run `make shell` 
+
+* In docker bash shell run `cucumber` for full automation run 

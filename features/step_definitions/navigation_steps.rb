@@ -1,4 +1,5 @@
 require 'rspec'
+require 'net/http'
 
 Given(/^the user navigates to the Brighter website$/) do
   @navigation = Navigation.new(@browser)
@@ -51,3 +52,20 @@ end
 And(/^the user receives mismatch error message$/) do
   expect(@find_practice.mismatch_message_displayed?).to match('We are unable to find a match for that phone number.')
 end
+
+And(/^the user goes to Tax Credit Company website$/) do
+  @navigation = Navigation.new(@browser)
+  @navigation.navigate_to_page(@browser)
+end
+
+And(/^the user click on the Solutions tab$/) do
+  @tax_solutions = TaxSolutions.new(@browser)
+  @tax_solutions.select_solutions_tab
+end
+
+And(/^the user gets http codes from each (.*) in this page$/) do |link|
+  uri = URI('https://taxcreditco.com/solutions/' + link)
+  res = Net::HTTP.get_response(uri)
+  puts res.code  
+end
+

@@ -28,6 +28,22 @@ Feature: Code Automation Test
     Examples:
     | phone_number |
     |  1111111111  |
-
+  
+  @tcc
+  Scenario Outline: Response status code for links
+    Given the user goes to Tax Credit Company website
+    And the user click on the Solutions tab 
+    And the user gets http codes from each <link> in this page
+    Examples:
+    |                link                  |
+    | work-opportunity-tax-credit/         |
+    | verification-services/               |
+    | research-development-tax-credit/     |
+    | sales-use-tax-incentives/            |
+    | family-medical-leave-act-tax-credit/ |
+    | other-federal-state-tax/             |
+    | hurricane-disaster-zone-incentives/  |
+    | cost-segregation/                    |
+    | green-building-179-d-incentives/     |
 
   
