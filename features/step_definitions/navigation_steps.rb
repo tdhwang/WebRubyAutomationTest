@@ -66,6 +66,5 @@ end
 And(/^the user gets http codes from each (.*) in this page$/) do |link|
   uri = URI('https://taxcreditco.com/solutions/' + link)
   res = Net::HTTP.get_response(uri)
-  puts res.code  
+  puts res.code
 end
-
